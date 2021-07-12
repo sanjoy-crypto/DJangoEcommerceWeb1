@@ -1,0 +1,31 @@
+{% load static %}
+<!-- HOME -->
+<div id="home">
+    <!-- container -->
+    <div class="">
+        <!-- home wrap -->
+        <div class="home-wrap">
+            <!-- home slick -->
+            <div id="home-slick">
+                <!-- banner -->
+                {% for slide in slider_image %}
+                <div class="banner banner-1">
+                    <img class="bannerImg" src="{{slide.image.url}}" alt="">
+                    <div class="banner-caption text-center">
+                        <h1>{{slide.title}}</h1>
+                        <h3 class="dark-color font-weak">{{slide.offer}}</h3>
+                        <button class="primary-btn">Shop Now</button>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- /banner -->
+
+
+            </div>
+            <!-- /home slick -->
+        </div>
+        <!-- /home wrap -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /HOME -->

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} User Signup {% endblock title %}
+{% block keywords %} {{setting.keywords}} {% endblock keywords %}
+{% block description %}{{setting.description}} {% endblock description %}
+{% block sidebar %} {% include 'Home/sidebar.html' %} {% endblock sidebar %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">User Signup</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="billing-details">
+
+                    <div class="section-title">
+                        <h3 class="title">Signup Form</h3>
+                    </div>
+
+                    <!-- {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{message.tags}}" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    {% endif %} -->
+
+
+
+                    <div class="box">
+                        <div class="box-form">
+                            <form method="post">
+                                {% csrf_token %}
+                                {% for field in form %}
+                                <p>
+                                    {{ field.label_tag }}<br>
+                                    {{ field }}
+
+                                    {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                </p>
+                                {% endfor %}
+                                <button class="primary-btn" type="submit">Sign up</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+    {% endblock content %}

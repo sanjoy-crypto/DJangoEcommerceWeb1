@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} {{ user.first_name }} Profile Update{% endblock %}
+{% block keywords %} {{setting.keywords}} {% endblock keywords %}
+{% block description %}{{setting.description}} {% endblock description %}
+{% block sidebar %} {% include 'Home/sidebar.html' %} {% endblock sidebar %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">{{ user.first_name }} Profile Update</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-3">
+                {% include "Home/user_panel.html" %}
+            </div>
+
+            <div class="col-md-9">
+                <div class="billing-details">
+                    <div class="section-title">
+                        <h3 class="title">User Profile Update</h3>
+                    </div>
+                </div>
+
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        {{ user_form.as_p }}
+                        {{ profile_form.as_p }}
+                    </fieldset>
+                    <div class="form-group">
+                        <button class="primary-btn" type="submit">Update</button>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock content %}

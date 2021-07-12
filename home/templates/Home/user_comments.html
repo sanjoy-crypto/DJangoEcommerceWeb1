@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} User Comments {% endblock title %}
+{% block keywords %} {{setting.keywords}} {% endblock keywords %}
+{% block description %}{{setting.description}} {% endblock description %}
+{% block sidebar %} {% include 'Home/sidebar.html' %} {% endblock sidebar %}
+
+{% block content %}
+
+<!-- BREADCRUMB -->
+<div id="breadcrumb">
+    <div class="container">
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a></li>
+            <li class="active">User Comments</li>
+        </ul>
+    </div>
+</div>
+<!-- /BREADCRUMB -->
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-2">
+                {% include "Home/user_panel.html" %}
+            </div>
+            <div class="col-md-10">
+                <div class="section-title">
+                    <h4 class="title">User Comment List</h4>
+                </div>
+                <table class="shopping-cart-table table">
+                    <tr>
+                        <th class="text-left">Product </th>
+                        <th class="text-left">Rate </th>
+                        <th class="text-left">Subject </th>
+                        <th class="text-left">Comment </th>
+                        <th class="text-left">Status </th>
+                        <th class="text-left">Date </th>
+                        <th class="text-left">Detail </th>
+                    </tr>
+                    {% for cmnt in comments %}
+                    <tr>
+                        <td class="text-left">
+                            <a href="{% url 'product_details' cmnt.product.id cmnt.product.slug %}">
+                                <strong> {{ cmnt.product.title}}</strong>
+                            </a>
+                        </td>
+                        <td class="text-left">{{ cmnt.rate}} </td>
+                        <td class="text-left">{{ cmnt.subject}} </td>
+                        <td class="text-left">{{ cmnt.comment}} </td>
+                        <td class="text-left">{{ cmnt.status}} </td>
+                        <td class="text-left">{{ cmnt.create_at}} </td>
+                        <td class="text-left">
+                            <a class="primary-btn" href="/user/deletecomment/{{ cmnt.id }}"
+                                onclick="return confirm('Will be Delete ! Are you sure?')"> Delete </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+{% endblock content %}

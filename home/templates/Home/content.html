@@ -1,0 +1,227 @@
+{% load static %}
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            {% for offer in offer_image %}
+            <!-- banner -->
+            <div class="col-md-4 col-sm-6">
+                <a class="banner banner-1" href="#">
+                    <img src="{{offer.image.url}}" alt="{{offer.title}}">
+                    <div class="banner-caption text-center">
+                        <!-- <h2 class="white-color">{{offer.title}}</h2> -->
+                    </div>
+                </a>
+            </div>
+            <!-- /banner -->
+            {% endfor %}
+
+
+
+        </div>
+        <!-- /row -->
+    </div>
+    <!-- /container -->
+</div>
+<!-- /section -->
+
+
+
+<!-- section -->
+<div class="section">
+    <!-- container -->
+    <div class="container">
+
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Latest Products</h2>
+                    <div class="pull-right">
+                        <div class="product-slick-dots-1 custom-dots">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- section title -->
+
+            <!-- Product Slick -->
+            <div class="col-md-12 col-sm-6 col-xs-6">
+                <div class="row">
+                    <div id="product-slick-1" class="product-slick">
+                        <!-- Product Single -->
+                        {% for product in latest_products %}
+                        <div class="product product-single">
+                            <div class="product-thumb">
+                                <div class="product-label">
+                                    <span>New</span>
+                                    <span class="sale">-20%</span>
+                                </div>
+                                <a href="{% url 'product_details' product.id product.slug %}"
+                                    class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                    view</a>
+                                <img src="{{product.image.url}}" alt="">
+                            </div>
+                            <div class="product-body">
+                                <h3 class="product-price">৳ {{product.price}}</h3>
+                                <div class="product-rating">
+                                    <i class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                    <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                    {{ product.avaregereview}}/{{ product.countreview}}
+                                </div>
+                                <h2 class="product-name oneLine"><a
+                                        href="{% url 'product_details' product.id product.slug %}">{{product.title}}</a>
+                                </h2>
+                                <div class="product-btns">
+                                    <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                    <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                    <a href="/order/addtoshopcart/{{product.id}}/" class="primary-btn add-to-cart"><i
+                                            class="fa fa-shopping-cart"></i> Add
+                                        to
+                                        Cart</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- /Product Single -->
+
+                    </div>
+                </div>
+            </div>
+            <!-- /Product Slick -->
+        </div>
+        <!-- /row -->
+
+        <!-- row -->
+        <div class="row">
+            <!-- section title -->
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2 class="title">Featured Products</h2>
+                </div>
+            </div>
+            <!-- section title -->
+
+            <!-- banner -->
+            <div class="col-md-12 col-sm-6 col-xs-6">
+
+                <!-- /banner -->
+                {% for product in products %}
+                <!-- Product Single -->
+                <div class="col-md-3 col-sm-6 col-xs-6">
+                    <div class="product product-single">
+                        <div class="product-thumb">
+                            <div class="product-label">
+                                <span>New</span>
+                                <span class="sale">-20%</span>
+                            </div>
+                            <a href="{% url 'product_details' product.id product.slug %}" class="main-btn quick-view"><i
+                                    class="fa fa-search-plus"></i> Quick
+                                view</a>
+                            <img src="{{product.image.url}}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <h3 class="product-price">৳ {{product.price}}</h3>
+                            <div class="product-rating">
+                                <i class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                {{ product.avaregereview}}/{{ product.countreview}}
+                            </div>
+                            <h2 class="product-name oneLine"><a
+                                    href="{% url 'product_details' product.id product.slug %}">{{product.title}}</a>
+                            </h2>
+                            <div class="product-btns">
+                                <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                <a href="/order/addtoshopcart/{{product.id}}/" class="primary-btn add-to-cart"><i
+                                        class="fa fa-shopping-cart"></i> Add
+                                    to
+                                    Cart</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <!-- /Product Single -->
+                {% endfor %}
+
+            </div>
+            <!-- /row -->
+
+            <!-- row -->
+            <div class="row">
+                <!-- section title -->
+                <div class="col-md-12">
+                    <div class="section-title">
+                        <h2 class="title">Picked For You</h2>
+                        <div class="pull-right">
+                            <div class="product-slick-dots-1 custom-dots">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- section title -->
+
+                <!-- Product Slick -->
+                <div class="col-md-12 col-sm-6 col-xs-6">
+                    <div class="row">
+                        <div id="product-slick-2" class="product-slick">
+                            <!-- Product Single -->
+                            {% for product in random_products %}
+                            <div class="product product-single">
+                                <div class="product-thumb">
+                                    <div class="product-label">
+                                        <span>New</span>
+                                        <span class="sale">-20%</span>
+                                    </div>
+                                    <a href="{% url 'product_details' product.id product.slug %}"
+                                        class="main-btn quick-view"><i class="fa fa-search-plus"></i> Quick
+                                        view</a>
+                                    <img src="{{product.image.url}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <h3 class="product-price">৳ {{product.price}}</h3>
+                                    <div class="product-rating">
+                                        <i class="fa fa-star{% if product.avaregereview < 1%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 2%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 3%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 4%}-o empty{% endif%}"></i>
+                                        <i class="fa fa-star{% if product.avaregereview < 5%}-o empty{% endif%}"></i>
+                                        {{ product.avaregereview}}/{{ product.countreview}}
+                                    </div>
+                                    <h2 class="product-name oneLine"><a
+                                            href="{% url 'product_details' product.id product.slug %}">{{product.title}}</a>
+                                    </h2>
+                                    <div class="product-btns">
+                                        <button class="main-btn icon-btn"><i class="fa fa-heart"></i></button>
+                                        <button class="main-btn icon-btn"><i class="fa fa-exchange"></i></button>
+                                        <a href="/order/addtoshopcart/{{product.id}}/"
+                                            class="primary-btn add-to-cart"><i class="fa fa-shopping-cart"></i> Add
+                                            to
+                                            Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                            <!-- /Product Single -->
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /Product Slick -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
